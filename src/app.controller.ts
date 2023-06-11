@@ -9,4 +9,17 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('/about')
+  getAppInfo(): {
+    logoSrc: string;
+    title: string;
+    description: string;
+  } {
+    return {
+      logoSrc: `${process.env.DOMAIN}/public/images/logo.png`,
+      title: 'Lightning Calculator',
+      description: 'My Web lab project description',
+    };
+  }
 }
