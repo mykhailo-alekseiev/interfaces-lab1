@@ -23,7 +23,7 @@ export class AppController {
   } {
     return {
       logoSrc: `${process.env.DOMAIN}/public/images/logo.png`,
-      title: 'Lightning Calculator',
+      title: 'Lightning Library',
       description: 'My Web lab project description',
     };
   }
