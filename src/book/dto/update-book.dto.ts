@@ -6,6 +6,8 @@ import {
   IsString,
 } from 'class-validator';
 import { User } from '../../auth/schemas/user.schema';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { CreateBookDto } from './create-book.dto';
 
 enum Category {
   Adventure = 'adventure',
@@ -14,23 +16,28 @@ enum Category {
   Category = 'category',
 }
 
-export class UpdateBookDto {
+export class UpdateBookDto extends PartialType(CreateBookDto) {
+  @ApiProperty({ example: 'Book title' })
   @IsOptional()
   @IsString()
   readonly title: string;
 
+  @ApiProperty({ example: 'Book description' })
   @IsOptional()
   @IsString()
   readonly description: string;
 
+  @ApiProperty({ example: 'Book author' })
   @IsOptional()
   @IsString()
   readonly author: string;
 
+  @ApiProperty({ example: 'Book price' })
   @IsOptional()
   @IsNumber()
   readonly price: number;
 
+  @ApiProperty({ example: Category.Adventure })
   @IsOptional()
   @IsEnum(Category, { message: 'Please select correct category' })
   readonly category: Category;

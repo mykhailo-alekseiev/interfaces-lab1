@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
@@ -11,6 +12,10 @@ export class AppController {
   }
 
   @Get('/about')
+  @ApiOperation({
+    summary: 'Get info about app',
+    description: 'Return title, description and image source',
+  })
   getAppInfo(): {
     logoSrc: string;
     title: string;

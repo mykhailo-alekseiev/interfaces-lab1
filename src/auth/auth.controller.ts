@@ -2,21 +2,27 @@ import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
 import { LoginDto } from './dto/login.dto';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from './schemas/user.schema';
 
 @Controller('auth')
-@ApiBearerAuth()
 @ApiTags('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('/signup')
-  @ApiResponse({
-    status: 201,
-    description: 'Successful authorization',
+  @ApiOperation({
+    summary: 'Sign Up',
+    description: 'Create new user',
   })
+  @ApiResponse({ status: 201, description: 'Success' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
   signUp(
     @Body()
     user: SignUpDto,
@@ -25,10 +31,12 @@ export class AuthController {
   }
 
   @Post('/login')
-  @ApiResponse({
-    status: 200,
-    description: 'User was created',
+  @ApiOperation({
+    summary: 'Login',
   })
+  @ApiResponse({ status: 200, description: 'Success' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
   login(
     @Body()
     loginDto: LoginDto,
@@ -37,11 +45,13 @@ export class AuthController {
   }
 
   @Post('/user')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard())
-  @ApiResponse({
-    status: 200,
-    description: 'Successful getting user info',
+  @ApiOperation({
+    summary: 'Get info about user',
   })
+  @ApiResponse({ status: 200, description: 'Success' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   getUser(
     @Req()
     req,

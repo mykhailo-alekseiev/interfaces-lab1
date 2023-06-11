@@ -62,6 +62,12 @@ export class BookService {
   }
 
   async update(id: string, book: Book): Promise<Book> {
+    const isValidId = mongoose.isValidObjectId(id);
+
+    if (!isValidId) {
+      throw new BadRequestException('Invalid book ID');
+    }
+
     const updatedBook = await this.bookModel.findByIdAndUpdate(id, book, {
       new: true,
       runValidators: true,
@@ -71,6 +77,12 @@ export class BookService {
   }
 
   async delete(id: string): Promise<Book> {
+    const isValidId = mongoose.isValidObjectId(id);
+
+    if (!isValidId) {
+      throw new BadRequestException('Invalid book ID');
+    }
+
     const deletedBook = await this.bookModel.findByIdAndDelete(id);
 
     return deletedBook;
