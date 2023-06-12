@@ -4,6 +4,7 @@ import { Document } from 'mongoose';
 export enum Gender {
   Man = 'man',
   Female = 'female',
+  Other = 'other',
 }
 
 @Schema({
