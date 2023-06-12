@@ -16,7 +16,7 @@ export class AuthService {
   ) {}
 
   async signUp(signUpDto: SignUpDto): Promise<{ access_token: string }> {
-    const { name, email, password, gender, birthdayDate } = signUpDto;
+    const { name, email, password, gender } = signUpDto;
 
     const hashedPassword = await hash(password, 10);
 
@@ -24,7 +24,6 @@ export class AuthService {
       email,
       name,
       gender,
-      birthdayDate,
       password: hashedPassword,
     });
 

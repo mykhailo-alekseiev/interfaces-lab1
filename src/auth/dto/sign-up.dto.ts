@@ -1,5 +1,4 @@
 import {
-  IsDateString,
   IsEmail,
   IsEnum,
   IsNotEmpty,
@@ -30,9 +29,4 @@ export class SignUpDto {
   @IsEnum(Gender, { message: 'Gender should be man, female or other' })
   @ApiProperty({ enum: [Gender.Man, Gender.Female, Gender.Other] })
   readonly gender: Gender;
-
-  @IsNotEmpty()
-  @IsDateString()
-  @ApiProperty({ example: 'Jun 11 2023' })
-  readonly birthdayDate: Date;
 }

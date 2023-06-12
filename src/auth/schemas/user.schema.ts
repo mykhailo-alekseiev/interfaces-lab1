@@ -22,9 +22,6 @@ export class User extends Document {
 
   @Prop()
   gender: Gender;
-
-  @Prop()
-  birthdayDate: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
