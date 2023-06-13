@@ -10,7 +10,7 @@ import { Gender } from '../schemas/user.schema';
 
 export class SignUpDto {
   @IsNotEmpty()
-  @IsEmail({}, { message: 'Please enter correct email' })
+  @IsEmail({}, { message: 'please enter correct email' })
   @ApiProperty({ example: 'email@gmail.ua' })
   readonly email: string;
 
@@ -26,7 +26,7 @@ export class SignUpDto {
   readonly password: string;
 
   @IsNotEmpty()
-  @IsEnum(Gender, { message: 'Gender should be man, female or other' })
+  @IsEnum(Gender, { message: 'gender should be man, female or other' })
   @ApiProperty({ enum: [Gender.Man, Gender.Female, Gender.Other] })
   readonly gender: Gender;
 }

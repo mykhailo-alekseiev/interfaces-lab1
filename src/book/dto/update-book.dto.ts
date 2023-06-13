@@ -39,7 +39,7 @@ export class UpdateBookDto extends PartialType(CreateBookDto) {
 
   @ApiProperty({ example: Category.Adventure })
   @IsOptional()
-  @IsEnum(Category, { message: 'Please select correct category' })
+  @IsEnum(Category, { message: 'please select correct category' })
   readonly category: Category;
 
   @IsEmpty({ message: "You can't pass user id" })
