@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
 import { LoginDto } from './dto/login.dto';
@@ -44,7 +44,7 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @Post('/user')
+  @Get('/user')
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @ApiOperation({
