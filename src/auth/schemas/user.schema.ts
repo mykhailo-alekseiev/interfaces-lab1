@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export enum Sex {
-  Male = 'Female',
+  Male = 'male',
   Female = 'female',
 }
 
