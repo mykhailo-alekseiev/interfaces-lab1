@@ -1,10 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export enum Gender {
-  Man = 'man',
+export enum Sex {
+  Male = 'Female',
   Female = 'female',
-  Other = 'other',
 }
 
 @Schema({
@@ -21,7 +20,7 @@ export class User extends Document {
   password: string;
 
   @Prop()
-  gender: Gender;
+  sex: Sex;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

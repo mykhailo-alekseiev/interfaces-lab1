@@ -16,14 +16,14 @@ export class AuthService {
   ) {}
 
   async signUp(signUpDto: SignUpDto): Promise<{ access_token: string }> {
-    const { name, email, password, gender } = signUpDto;
+    const { name, email, password, sex } = signUpDto;
 
     const hashedPassword = await hash(password, 10);
 
     const user = await this.userModel.create({
       email,
       name,
-      gender,
+      sex,
       password: hashedPassword,
     });
 
