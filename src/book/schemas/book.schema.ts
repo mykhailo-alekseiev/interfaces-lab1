@@ -6,7 +6,7 @@ export enum Category {
   Adventure = 'adventure',
   Classic = 'classic',
   Crime = 'crime',
-  Category = 'category',
+  Love = 'love',
 }
 
 @Schema({

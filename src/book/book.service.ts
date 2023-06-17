@@ -18,23 +18,22 @@ export class BookService {
   ) {}
 
   async findAll(query: ExpressQuery): Promise<Book[]> {
-    const resPerPage = 2;
-    const currentPage = +query.page || 1;
-    const skip = resPerPage * (currentPage - 1);
+    // const resPerPage = 100;
+    // const currentPage = +query.page || 1;
+    // const skip = resPerPage * (currentPage - 1);
 
-    const keywords = query.keywords
-      ? {
-          title: {
-            $regex: query.keywords,
-            $options: 'i',
-          },
-        }
-      : null;
+    // const keywords = query.keywords
+    //   ? {
+    //       title: {
+    //         $regex: query.keywords,
+    //         $options: 'i',
+    //       },
+    //     }
+    //   : null;
 
-    const books = await this.bookModel
-      .find({ ...keywords })
-      .limit(resPerPage)
-      .skip(skip);
+    const books = await this.bookModel.find();
+    // .limit(resPerPage)
+    // .skip(skip);
 
     return books;
   }

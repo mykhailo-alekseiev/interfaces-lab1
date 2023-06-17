@@ -13,7 +13,7 @@ enum Category {
   Adventure = 'adventure',
   Classic = 'classic',
   Crime = 'crime',
-  Category = 'category',
+  Love = 'love',
 }
 
 export class UpdateBookDto extends PartialType(CreateBookDto) {
